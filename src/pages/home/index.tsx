@@ -10,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     async function getToken() {
       try {
-        const response = await axios.post("/api/spotify/authorize", {
+        const response = await axios.post("/api/auth/callback", {
           code: router.query.code
         });
 
