@@ -1,1 +1,0 @@
-export { loginUrl } from "./constants";

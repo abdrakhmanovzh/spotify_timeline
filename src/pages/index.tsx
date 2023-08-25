@@ -1,9 +1,9 @@
-import { Home } from "@/features/home";
+import { Main } from "@/features/main";
 import { Footer } from "@/features/footer";
 import { Navbar } from "@/features/navbar";
 import Head from "next/head";
 
-export default function Initial() {
+export default function MainPage() {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function Initial() {
       </Head>
       <div className="flex min-h-[100svh] w-[100svw] flex-col bg-main-green">
         <Navbar />
-        <Home />
+        <Main />
         <Footer />
       </div>
     </>
