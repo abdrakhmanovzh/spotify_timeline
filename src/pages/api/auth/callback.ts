@@ -10,32 +10,30 @@ export default async function handler(
     const code = req.query.code || null;
     const clientId = process.env.SPOTIFY_CLIENT_ID || "";
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || "";
-
-    const authOptions = {
-      url: "https://accounts.spotify.com/api/token",
-      method: "post",
-      headers: {
-        Authorization: `Basic ${Buffer.from(
-          `${clientId}:${clientSecret}`
-        ).toString("base64")}`,
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: querystring.stringify({
-        code: code,
-        redirect_uri: process.env.SPOTY_REDIRECT_URI,
-        grant_type: "authorization_code"
-      })
-    };
+    const redirectUri = process.env.SPOTY_REDIRECT_URI || "";
+    const url = "https://accounts.spotify.com/api/token";
+    const data = querystring.stringify({
+      code: code,
+      redirect_uri: redirectUri,
+      grant_type: "authorization_code"
+    });
 
     try {
-      const response = await axios(authOptions);
+      const response = await axios.post(url, data, {
+        headers: {
+          Authorization: `Basic ${Buffer.from(
+            `${clientId}:${clientSecret}`
+          ).toString("base64")}`,
+          "Content-Type": "application/x-www-form-urlencoded;application/json"
+        }
+      });
       const { access_token, refresh_token } = response.data;
 
       console.log(access_token, refresh_token);
 
       res.redirect("/home");
     } catch (error) {
-      console.error(error);
+      console.error((error as any).message);
       res.status(500).json({ error: error || "Internal Server Error" });
     }
   } else {
