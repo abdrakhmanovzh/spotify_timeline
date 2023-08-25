@@ -1,1 +1,1 @@
-export const loginUrl = "/api/login";
+export const loginUrl = "/api/auth/login";
