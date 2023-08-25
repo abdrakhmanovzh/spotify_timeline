@@ -14,7 +14,8 @@ export default async function handler(
       url: "https://accounts.spotify.com/api/token",
       method: "post",
       headers: {
-        Authorization: `Basic ${Buffer.from(clientId).toString("base64")} `
+        Authorization: `Basic ${Buffer.from(clientId).toString("base64")}`,
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       data: querystring.stringify({
         code: code,
