@@ -6,7 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "GET") {
+  if (req.method === "POST") {
     const code = req.query.code || null;
     const clientId = process.env.SPOTIFY_CLIENT_ID || "";
     const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || "";
