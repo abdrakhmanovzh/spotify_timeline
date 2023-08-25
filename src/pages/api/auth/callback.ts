@@ -32,7 +32,7 @@ export default async function handler(
       res.redirect("/home");
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: error || "Internal Server Error" });
     }
   } else {
     res.status(405).json({ message: "Method not allowed" });
