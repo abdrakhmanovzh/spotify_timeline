@@ -1,7 +1,7 @@
 {
-   "tabWidth": 2,
-   "trailingComma": "none",
-   "pluginSearchDirs": false,
-   "plugins": ["prettier-plugin-tailwindcss"],
-   "printWidth": 80
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "pluginSearchDirs": false,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "printWidth": 80
 }

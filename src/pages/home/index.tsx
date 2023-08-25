@@ -1,33 +1,6 @@
-import axios from "axios";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 const HomePage = () => {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function getToken() {
-      try {
-        const response = await axios.post("/api/auth/callback", {
-          code: router.query.code
-        });
-
-        if (response.data) {
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getToken();
-  }, []);
-
-  if (isLoading) {
-    return <h1 className="text-5xl">Loading...</h1>;
-  }
-
   return (
     <>
       <Head>
