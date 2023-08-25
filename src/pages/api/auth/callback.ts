@@ -9,12 +9,15 @@ export default async function handler(
   if (req.method === "GET") {
     const code = req.query.code || null;
     const clientId = process.env.SPOTIFY_CLIENT_ID || "";
+    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || "";
 
     const authOptions = {
       url: "https://accounts.spotify.com/api/token",
       method: "post",
       headers: {
-        Authorization: `Basic ${Buffer.from(clientId).toString("base64")}`,
+        Authorization: `Basic ${Buffer.from(
+          `${clientId}:${clientSecret}`
+        ).toString("base64")}`,
         "Content-Type": "application/x-www-form-urlencoded"
       },
       data: querystring.stringify({
