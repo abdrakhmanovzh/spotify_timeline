@@ -27,7 +27,7 @@ export default function MainPage() {
       <Head>
         <title>Spotify Timeline</title>
       </Head>
-      <div className="flex min-h-[100svh] max-w-[100svw] flex-col bg-main-green">
+      <div className="flex h-[100svh] max-w-[100svw] flex-col bg-main-green">
         <Navbar />
         <Main />
         <Footer />
