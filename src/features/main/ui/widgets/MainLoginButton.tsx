@@ -1,4 +1,4 @@
-import { loginUrl } from "@/shared";
+import { loginUrl } from "@/shared/constants";
 import { useRouter } from "next/router";
 
 export const MainLoginButton = () => {

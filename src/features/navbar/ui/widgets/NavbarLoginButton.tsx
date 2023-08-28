@@ -1,26 +1,37 @@
-import { loginUrl } from "@/shared/constants/constants";
+import Cookies from "js-cookie";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { loginUrl } from "@/shared/constants";
+import { useAuthStore } from "@/features/auth";
 
 export const NavbarLoginButton = () => {
   const router = useRouter();
+
+  const { user, logout } = useAuthStore();
 
   const buttonClickAnimations = {
     scale: 0.3,
     transition: { duration: 0.2, ease: "easeInOut" }
   };
 
-  const handleLogin = () => {
-    router.push(loginUrl);
+  const handleButton = () => {
+    if (user) {
+      Cookies.remove("access_token");
+      Cookies.remove("refresh_token");
+      logout();
+      router.push("/");
+    } else {
+      router.push(loginUrl);
+    }
   };
 
   return (
     <motion.button
-      onClick={handleLogin}
+      onClick={handleButton}
       whileTap={buttonClickAnimations}
-      className="shadow-login-button-sm lg:shadow-login-button border-2 border-black p-1 text-base font-semibold lg:p-2 lg:text-lg"
+      className="border-2 border-black p-1 text-base font-semibold shadow-login-button-sm lg:p-2 lg:text-lg lg:shadow-login-button"
     >
-      login
+      {user ? "logout" : "login"}
     </motion.button>
   );
 };

@@ -31,12 +31,8 @@ export default async function handler(
     const { access_token, refresh_token } = response.data;
 
     res.setHeader("Set-Cookie", [
-      "access_token=" +
-        access_token +
-        "; Path=/; HttpOnly; Secure; Max-Age=3600",
-      "refresh_token=" +
-        refresh_token +
-        "; Path=/; HttpOnly; Secure; Max-Age=3600 * 24"
+      "access_token=" + access_token + "; Path=/; Max-Age=3600",
+      "refresh_token=" + refresh_token + "; Path=/; Max-Age=3600 * 24"
     ]);
 
     res.redirect("/home");

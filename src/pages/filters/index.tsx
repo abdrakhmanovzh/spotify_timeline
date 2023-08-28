@@ -1,12 +1,13 @@
 import Head from "next/head";
+import { GetServerSideProps } from "next";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import { GetServerSideProps } from "next";
-import { User, useUser } from "@/features/user";
-import { useAuthStore } from "@/features/auth";
-import { Footer } from "@/features/footer";
 import { Navbar } from "@/features/navbar";
-import { Loading, Placeholder } from "@/shared/widgets";
+import { Footer } from "@/features/footer";
+import { Filters } from "@/features/filters";
+import { useUser } from "@/features/user";
+import { useAuthStore } from "@/features/auth";
+import { Loading } from "@/shared/widgets";
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const accessToken = req.cookies["access_token"];
@@ -25,10 +26,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   };
 };
 
-const HomePage = () => {
-  // Getting the access token from the cookies
+const FiltersPage = () => {
   const accessToken = Cookies.get("access_token");
-  //Fetching the user from the spotify api
+
   const {
     data: userData,
     isLoading: userLoading,
@@ -45,10 +45,6 @@ const HomePage = () => {
     }
   }, [accessToken, login, setIsLoading, userData]);
 
-  //Getting the user from the global state
-  const { user } = useAuthStore();
-
-  //Rendering loading screen if the user is not loaded yet
   if (userLoading || !userData || userError || isLoading)
     return (
       <>
@@ -64,15 +60,15 @@ const HomePage = () => {
   return (
     <>
       <Head>
-        <title>Spotify Timeline</title>
+        <title>Filters | Spotify Timeline</title>
       </Head>
       <div className="flex min-h-[100svh] max-w-[100svw] flex-col bg-main-green">
         <Navbar />
-        {user ? <User /> : <Placeholder />}
+        <Filters />
         <Footer />
       </div>
     </>
   );
 };
 
-export default HomePage;
+export default FiltersPage;
