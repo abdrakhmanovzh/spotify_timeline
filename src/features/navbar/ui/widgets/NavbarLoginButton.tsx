@@ -10,7 +10,7 @@ export const NavbarLoginButton = () => {
   const { user, logout } = useAuthStore();
 
   const buttonClickAnimations = {
-    scale: 0.3,
+    scale: [1, 0.9],
     transition: { duration: 0.2, ease: "easeInOut" }
   };
 
@@ -29,7 +29,7 @@ export const NavbarLoginButton = () => {
     <motion.button
       onClick={handleButton}
       whileTap={buttonClickAnimations}
-      className="border-2 border-black p-1 text-base font-semibold shadow-login-button-sm lg:p-2 lg:text-lg lg:shadow-login-button"
+      className="border-[3px] border-black p-1 text-base font-semibold shadow-login-button-sm lg:p-2 lg:text-lg lg:shadow-login-button"
     >
       {user ? "logout" : "login"}
     </motion.button>

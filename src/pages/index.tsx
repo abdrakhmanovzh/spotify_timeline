@@ -1,8 +1,8 @@
-import { Main } from "@/features/main";
-import { Footer } from "@/features/footer";
-import { Navbar } from "@/features/navbar";
 import Head from "next/head";
 import { GetServerSideProps } from "next";
+import { Navbar } from "@/features/navbar";
+import { Footer } from "@/features/footer";
+import { Main } from "@/features/main";
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const accessToken = req.cookies["access_token"];

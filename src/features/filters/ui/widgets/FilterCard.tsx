@@ -27,7 +27,7 @@ export const FilterCard = ({ selectedMode, selectedPeriod, items }: Props) => {
             width={64}
             height={64}
             alt="track image"
-            className="border-[3px] border-black"
+            className="h-16 w-16 border-[3px] border-black object-cover"
           />
         </div>
       ))}

@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { Lexend_Deca } from "next/font/google";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { IBM_Plex_Mono } from "next/font/google";
 
 const queryClient = new QueryClient();
-const font = IBM_Plex_Mono({
+const font = Lexend_Deca({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"]
 });

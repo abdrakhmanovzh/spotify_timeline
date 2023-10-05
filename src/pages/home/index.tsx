@@ -2,11 +2,11 @@ import Head from "next/head";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { GetServerSideProps } from "next";
+import { Loading, Placeholder } from "@/shared/widgets";
 import { User, useUser } from "@/features/user";
 import { useAuthStore } from "@/features/auth";
 import { Footer } from "@/features/footer";
 import { Navbar } from "@/features/navbar";
-import { Loading, Placeholder } from "@/shared/widgets";
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const accessToken = req.cookies["access_token"];
@@ -66,7 +66,7 @@ const HomePage = () => {
       <Head>
         <title>Spotify Timeline</title>
       </Head>
-      <div className="flex min-h-[100svh] max-w-[100svw] flex-col bg-main-green">
+      <div className="flex min-h-[100svh] max-w-[100svw] flex-col bg-main-green lg:h-[100svh]">
         <Navbar />
         {user ? <User /> : <Placeholder />}
         <Footer />

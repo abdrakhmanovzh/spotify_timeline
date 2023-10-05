@@ -18,8 +18,8 @@ export const TopTracks = ({ items }: Props) => {
             src={item.album.images[0].url}
             width={64}
             height={64}
+            className="h-16 w-16 border-[3px] border-black object-cover"
             alt="track"
-            className="border-[3px] border-black"
           />
         </div>
       ))}

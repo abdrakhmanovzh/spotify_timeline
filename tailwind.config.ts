@@ -9,11 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "main-green": "#daffde"
+        "main-green": "#bafca2"
       },
       boxShadow: {
-        "login-button-sm": "4px 4px 0 0 #000",
-        "login-button": "10px 10px 0 0 #000"
+        "login-button-sm": "6px 6px 0 0 #000",
+        "login-button": "8px 8px 0 0 #000"
       }
     }
   },

@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { GetServerSideProps } from "next";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
+import { GetServerSideProps } from "next";
+import { useAuthStore } from "@/features/auth";
+import { Filters } from "@/features/filters";
 import { Navbar } from "@/features/navbar";
 import { Footer } from "@/features/footer";
-import { Filters } from "@/features/filters";
-import { useUser } from "@/features/user";
-import { useAuthStore } from "@/features/auth";
 import { Loading } from "@/shared/widgets";
+import { useUser } from "@/features/user";
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const accessToken = req.cookies["access_token"];
